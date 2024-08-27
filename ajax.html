@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;;
+            margin: 0;
+        }
+        .main{
+            padding: 20px;
+            background-color: black;
+        }
+        .form{
+            width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            border: 1px solid black;
+            border-radius: 20px;
+            height: 300px;
+        }
+        #submit{
+            background-color: green;
+            color: white;
+            padding: 20px;
+            border-radius: 20px;
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        
+        table,th,td{
+            border: 1px solid black;
+            padding: 10px;
+            border-collapse: collapse;
+        }
+        table{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+       <div class="main">
+           <h1 style="color: white;font-family: cursive;text-align: center;"> weather of your city</h1>
+
+       </div>
+       <div class="form">
+          <form action="" >
+            <div style="padding: 20px;">
+                <label>Enter your City Name</label>
+                <input type="text" id="city" placeholder="enter your city" required>
+            </div>
+           
+             <button id="submit">Get Weather</button>
+
+
+            
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sno.</th>
+                        <th>City Name</th>
+                        <th>Temp</th>
+                    </tr>
+
+                </thead>
+                <tbody id="re">
+                    
+                </tbody>
+            </table>
+
+       </div>
+       <script>
+
+        const tbody=document.querySelector('#re');
+
+             const submit=document.querySelector('#submit');
+
+             const API_KEY="95eba6686d95f59d82c03194fc4dd14d";
+             submit.addEventListener('click',fetchWeather)
+
+             function fetchWeather(event){
+                event.preventDefault();
+               
+               let city=document.querySelector('#city').value;
+               document.querySelector('#city').value='';
+       
+                const xhr= new XMLHttpRequest();
+                const url='https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid='+API_KEY;
+                xhr.open('GET',url,true);
+
+                 xhr.onreadystatechange=function(){
+                    if(this.readyState==4 && this.status==200){
+                        console.log(this.responseText)
+                        let result=JSON.parse(this.responseText);
+                         renderResult(result);
+
+                    }
+
+                 }
+
+                 xhr.send()
+             }
+  
+             let sn=0;
+
+
+             function renderResult(result){
+                  
+                    let temp= result.main.temp;
+                    let ce= temp-273.15;
+                    ce=ce.toFixed(2);
+                    
+                    // create new element 
+                    let tr=document.createElement('tr');
+                    let sno=document.createElement('td');
+                    let city=document.createElement('td')
+                    let tp=document.createElement('td');
+
+                 
+
+                    // set data into new element
+                    sno.textContent=++sn;
+                    city.textContent=result.name;
+                    tp.textContent=ce+'°C';
+
+                
+
+
+                    // append element
+
+                    tr.append(sno,city,tp);
+
+                   tbody.append(tr);
+
+
+
+
+
+
+
+             }
+       </script>
+
+</body>
+</html>

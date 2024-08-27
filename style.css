@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.page1{
+    height: 100vh;
+    width: 100vw;
+    background-image: url(./image/2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.centercard{
+        width: 	350px;
+        height: 100px;
+        background-color: rgba(255, 255, 255, 0.167);
+        backdrop-filter: blur(20px);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+}
+.imagebox{
+    height: 350px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: none;
+
+    /* background-color: #fff; */
+}
+.imagebox h1{
+    font-size: 80px;
+    color: white;
+    margin-top: -50px;
+    text-align: center;
+}
+.searchbox{
+    height: 10%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    
+}
+#citysearch{
+ outline: none !important;
+ box-shadow: none !important;
+}
+.searchbox button{
+    height: 40px;
+    width: 20%;
+    border: none;
+    outline: none;
+    /* padding: 10px 20px; */
+    border-radius: 10px;
+}
+.footer{
+    height: 20%;
+    width: 100%;
+    /* background-color: green; */
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    display: none;
+}
+.left{
+    height: 100%;
+    width: 40%;
+    /* background-color: gainsboro; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.left h2{
+    font-size: 13px;
+    color: white;
+}
+.right{
+    height: 100%;
+    width: 40%;
+    /* background-color: gainsboro; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.right h2{
+    font-size: 13px;
+    color: white;
+}
